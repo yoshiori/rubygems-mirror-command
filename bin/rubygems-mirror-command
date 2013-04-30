@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'rubygems/mirror/command/CLI'
+
+Rubygems::Mirror::Command::CLI.start
