@@ -22,6 +22,7 @@ module Rubygems
           "latest_specs.#{Gem.marshal_version}.gz",
           "Marshal.#{Gem.marshal_version}.Z",
           "yaml",
+          "quick/latest_index.rz",
         ]
 
         GEMSPECS_DIR = "quick/Marshal.#{Gem.marshal_version}/"
@@ -33,7 +34,7 @@ module Rubygems
           fetch_gemspecs
         end
 
-        desc "server", "start mirror server."
+        desc "server [port]", "start mirror server."
         def server(port = 4000)
           WEBrick::HTTPServer.new(:DocumentRoot => to, :Port => port).start
         end
