@@ -1,24 +1,55 @@
 # Rubygems::Mirror::Command
 
-TODO: Write a gem description
+gem mirror fetcher and start mirror server.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'rubygems-mirror-command'
+```ruby:Gemfile
+gem "rubygems-mirror-command", :git => "git@github.com:yoshiori/rubygems-mirror-command.git"
+```
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install rubygems-mirror-command
+```
+$ git clone git@github.com:yoshiori/rubygems-mirror-command.git
+$ cd rubygems-mirror-command
+$ gem build rubygems-mirror-command.gemspec
+$ rubygems-mirror-command-0.0.1.gem
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+### fetch files
+```
+$ rubygems-mirror-command fetch
+```
+
+### start server
+
+```
+$ rubygems-mirror-command server
+```
+
+Or specified Port
+
+```
+$ rubygems-mirror-command server 3999
+```
+
+### install gem for local mirror
+
+```
+$ gem install rails -r --source http://localhost:4000/
+```
+
 
 ## Contributing
 
