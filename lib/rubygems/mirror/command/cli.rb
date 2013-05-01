@@ -14,7 +14,7 @@ module Rubygems
 
         DEFAULT_CONFIG = [{
               "from" => "http://production.s3.rubygems.org",
-              "to" => "/tmp/rubygems",
+              "to" => File.join(Gem.user_home, '.gem', "rubygems"),
               "parallelism" => 10,
           }]
 
@@ -40,6 +40,7 @@ module Rubygems
 
         desc "fetch_allgems", "fetch only gems."
         def fetch_allgems
+          config_file
           say "fetch_allgems start!", :GREEN
           Gem::Commands::MirrorCommand.new.execute
           say "fetch_allgems end!", :GREEN
@@ -85,11 +86,15 @@ module Rubygems
         def mirror
           @mirror ||=
             begin
-              config_file = File.join Gem.user_home, '.gem', '.mirrorrc'
-              create_config(config_file) unless File.exist? config_file
               mirrors = YAML.load_file config_file
               mirrors.first
             end
+        end
+
+        def config_file
+          _config_file = File.join Gem.user_home, '.gem', '.mirrorrc'
+          create_config(_config_file) unless File.exist? _config_file
+          _config_file
         end
 
         def create_config(config_file)
