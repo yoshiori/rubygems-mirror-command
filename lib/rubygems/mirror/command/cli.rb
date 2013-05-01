@@ -26,7 +26,7 @@ module Rubygems
 
         GEMSPECS_DIR = "quick/Marshal.#{Gem.marshal_version}/"
 
-        desc "fetch", "fetch gems."
+        desc "fetch", "fetch all the necessary files to the server."
         def fetch
           fetch_allgems
           fetch_basefile
